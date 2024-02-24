@@ -1,12 +1,10 @@
-// src/App.js
-
 import React from 'react';
-import './App.css';
+import Papers from './Views/Papers';
 
 function App() {
   return (
     <div className="app">
-      a
+      <Papers />
     </div>
   );
 }

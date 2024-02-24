@@ -3,9 +3,9 @@
     height: 794px; /* A4の幅 */
     border: 1px solid #D3D3D3; /* 印刷時には非表示に設定 */
     margin: auto; /* 中央揃え */
-    page-break-after: always; /* 印刷時に次の要素を新しいページに */
     background: white; /* 背景色 */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* シャドウ効果（画面表示用） */
+    page-break-after: always; /* 印刷時に次の要素を新しいページに */
   }
   
   @media print {
@@ -17,5 +17,8 @@
       margin: 0; /* 印刷時には余白なし */
       page-break-after: always; /* 印刷時に次の要素を新しいページに */
     }
+    .table, .table tr, .table td, .table th {
+        page-break-inside: avoid; /* テーブルの行がページを跨がないように */
+      }
   }
   
