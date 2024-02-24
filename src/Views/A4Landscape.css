@@ -1,0 +1,21 @@
+.a4Landscape {
+    width: 1123px; /* A4の高さ */
+    height: 794px; /* A4の幅 */
+    border: 1px solid #D3D3D3; /* 印刷時には非表示に設定 */
+    margin: auto; /* 中央揃え */
+    page-break-after: always; /* 印刷時に次の要素を新しいページに */
+    background: white; /* 背景色 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* シャドウ効果（画面表示用） */
+  }
+  
+  @media print {
+    .a4Landscape {
+      box-shadow: none; /* 印刷時にはシャドウを非表示に */
+      border: none; /* 印刷時には境界線を非表示に */
+      width: 100%; /* 印刷時にはページ幅いっぱいに */
+      height: auto; /* 印刷時には自動的に高さを調整 */
+      margin: 0; /* 印刷時には余白なし */
+      page-break-after: always; /* 印刷時に次の要素を新しいページに */
+    }
+  }
+  
