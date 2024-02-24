@@ -1,13 +1,15 @@
+import React from 'react';
 import A4Landscape from './A4Landscape';
+import sampleData from '../Datas/SampleData'; // サンプルデータのインポート
 
-function papers() {
+const Papers = () => {
     return (
-      <div className="papers">
-        <A4Landscape />
-        <A4Landscape lastElement={true}/>
-      </div>
+        <div>
+            {sampleData.map((data, index) => (
+                <A4Landscape key={index} data={data} />
+            ))}
+        </div>
     );
-  }
-  
-  export default papers;
-  
+};
+
+export default Papers;

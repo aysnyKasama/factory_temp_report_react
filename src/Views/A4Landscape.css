@@ -1,14 +1,14 @@
-
 .a4Landscape {
   width:  297mm; /* A4の高さ 297mm*/
   height: 210mm; /* A4の幅 210mm*/
   border: 1px solid #D3D3D3; /* 印刷時には非表示に設定 */
   margin: auto; /* 中央揃え */
   background: white; /* 背景色 */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* シャドウ効果（画面表示用） */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* シャドウ効果（画面表示用） */
   page-break-after: always; /* 印刷時に次の要素を新しいページに */
+  /* 下側に余白を追加 */
+  margin-bottom: 10px;
 }
-
 
 @media print {
   .a4Landscape {
