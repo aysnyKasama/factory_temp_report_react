@@ -7,7 +7,7 @@ import './App.css';
 function App() {
     return (
         <div>
-            <CssBaseline />
+            <CssBaseline /> 
             <Container maxWidth="lg">
                 <Header />
                 <Papers />

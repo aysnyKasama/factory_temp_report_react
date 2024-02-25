@@ -1,13 +1,13 @@
+/* ヘッダー 検索ボックス */
 .header-component {
-    /* ヘッダーを四角でモダンに囲む */
-    padding: 10px;
-    margin-bottom: 10px;
-    /* 影 */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    /* 背景色 */
-    background-color: #fff;
-    /* 上を余白 */
-    margin-top: 10px;
+    margin-top: 10px;   /* 上を余白 */
+    padding: 10px;    /* 内側の余白 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);    /* 影 */
+    background-color: #fff;     /* 背景色 */
+    /* display: flex;    横並び */
+    /* justify-content: space-between;    両端寄せ */
+    /* align-items: center;    中央寄せ */
+
 }
 
 @media print {
