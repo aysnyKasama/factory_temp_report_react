@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper, Typography } from '@mui/material';
-import Datatable from './Datatable'; // Datatableコンポーネントをインポート
+
 import './A4Landscape.css'; // CSSをインポート
 
 const A4Landscape = ({ data }) => {
@@ -17,8 +17,34 @@ const A4Landscape = ({ data }) => {
                 <Typography variant="subtitle1">{creationDate}</Typography>
                 <Typography variant="subtitle1" gutterBottom>{companyName}</Typography>
 
-                {/* Datatableコンポーネントを配置し、dataプロパティを通じてデータを渡す */}
-                <Datatable data={data} />
+                
+                {/* テーブル */}
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>日付</th>
+                            <th>時間</th>
+                            <th>温度(℃)</th>
+                            <th>湿度(%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            data.map((item, index) => (
+                                <tr key={index}>
+                                    <td>{item.id}</td>
+                                    <td>{item.date}</td>
+                                    <td>{item.time}</td>
+                                    <td>{item.temperature}</td>
+                                    <td>{item.humidity}</td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+
+
             </Paper>
         </div>
     );

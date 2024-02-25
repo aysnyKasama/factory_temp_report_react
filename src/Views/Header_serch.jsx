@@ -23,7 +23,7 @@ const fetchApiData = async () => {
     ];
 };
 
-const Header = () => {
+const Header = (props) => {
     const [startDate, setStartDate] = useState('');
     const [dayOfWeek, setDayOfWeek] = useState('');
     const [selectedExcel, setSelectedExcel] = useState('');
@@ -61,7 +61,10 @@ const Header = () => {
                     <Autocomplete
                         options={apiData.map((option) => option.excelName)}
                         value={selectedExcel}
-                        onChange={(event, newValue) => setSelectedExcel(newValue)}
+                        onChange={(event, newValue) => { 
+                            setSelectedExcel(newValue);
+                            props.onDataChange(newValue);
+                        }}
                         renderInput={(params) => <TextField {...params} label="エクセル名" />}
                     />
                 </Grid>
@@ -104,6 +107,7 @@ const Header = () => {
 
 Header.propTypes = {
     // Propsの型定義をここに追加
+    onDataChange: PropTypes.func.isRequired,
 };
 
 export default Header;
