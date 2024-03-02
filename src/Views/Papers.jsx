@@ -1,6 +1,6 @@
 import React from 'react';
 import A4Landscape from './A4Landscape';
-import sampleData from '../Datas/SampleData01'; // サンプルデータのインポート
+import sampleData from '../Datas/TyouhyouData01'; // サンプルデータのインポート
 
 // 指定されたサイズで配列をチャンクに分割するヘルパー関数
 const chunkArray = (array, chunkSize) => {

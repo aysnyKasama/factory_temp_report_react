@@ -1,57 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import { CssBaseline, Container } from '@mui/material';
-import Header from './Views/Header_serch';
+import Header from './Views/Header_search'; // Typo を修正しました (Header_serch -> Header_search)
 import Papers from './Views/Papers';
-import SampleData01 from './Datas/SampleData01';
-import SampleData02 from './Datas/SampleData02';
+// 帳票データのサンプルデータ
+import TyouhyouData01 from './Datas/TyouhyouData01';
+import TyouhyouData02 from './Datas/TyouhyouData02';
+// 機能１.エクセルリストのサンプルデータ
+import ExcelList from './Datas/ExcelList';
 import './App.css';
 
-// データセットのマッピング
-const dataSets = {
-    'Excel1': SampleData01,
-    'Excel2': SampleData02,
-    '':'',
-};
-
-// Appコンポーネント
 function App() {
-    const [selectedDataSet, setSelectedDataSet] = useState('Excel1'); // selectedDataSetを定義し、初期値を設定
-    const [data, setData] = useState([]); // API から取得したデータを保持
+    // -------------------------    デバッグモードの状態を管理  -------------------------
+    const [isDebugMode, setIsDebugMode] = useState(true); // デバッグモードの状態
 
-    // 選択されたデータセットが変更された場合、またはコンポーネントがマウントされた時に API を呼び出す
+    // -------------------------    エクセルデータの状態を管理  -------------------------
+    const [selectedExcelFile, setSelectedExcelFile] = useState('Excel1');   // 機能１.選択されたエクセルファイル名
+    const [excelData, setExcelData] = useState([]);                         // 帳票データ
+
+    // 選択されたエクセルファイルが変更された場合、またはコンポーネントがマウントされた時にデータを取得
     useEffect(() => {
-        // -------------------------        API からデータを取得する関数（仮）          -------------------------
-        // const fetchData = async () => {
-        //     // API 呼び出しの URL（例: `https://api.example.com/data?dataset=${selectedDataSet}`）
-        //     // 実際の API エンドポイントとパラメータに置き換えてください。
-        //     const apiUrl = `https://api.example.com/data?dataset=${selectedDataSet}`;
-        //     try {
-        //         const response = await fetch(apiUrl);
-        //         const data = await response.json();
-        //         setData(data); // 取得したデータをセット
-        //     } catch (error) {
-        //         console.error("API からのデータ取得に失敗しました:", error);
-        //     }
-        // };
+        if (isDebugMode) {
+            // デバッグモード：静的エクセルデータを使用
+            if (selectedExcelFile === 'Excel1') setExcelData(TyouhyouData01);
+            if (selectedExcelFile === 'Excel2') setExcelData(TyouhyouData02);
+        } else {
+            // 本番モード：API からエクセルデータを取得
+            const fetchData = async () => {
+                const apiUrl = `https://api.example.com/data?excelFile=${selectedExcelFile}`;
+                try {
+                    const response = await fetch(apiUrl);
+                    const data = await response.json();
+                    setExcelData(data);
+                } catch (error) {
+                    console.error("API からのエクセルデータ取得に失敗しました:", error);
+                }
+            };
 
-        // fetchData();
+            fetchData();
+        }
+    }, [selectedExcelFile]); // useEffect の依存配列
 
-        // -------------------------       静的なサンプルデータを使う場合のコード       -------------------------
-        setData(dataSets[selectedDataSet]);
-
-    }, [selectedDataSet]); // selectedDataSet が変更されるたびにこの効果を実行
-
-
-    const handleDataChange = (dataSetName) => {
-        setSelectedDataSet(dataSetName); // 選択されたデータセット名を更新
+    const handleExcelFileChange = (excelFileName) => {
+        setSelectedExcelFile(excelFileName); // 選択されたエクセルファイル名を更新
     };
 
     return (
         <div>
-            <CssBaseline /> 
+            <CssBaseline />
             <Container maxWidth="lg">
-                <Header onDataChange={handleDataChange} />
-                <Papers data={data} />
+                <Header onExcelFileChange={handleExcelFileChange} ExcelList={ExcelList} />
+                <Papers data={excelData} />
             </Container>
         </div>
     );
