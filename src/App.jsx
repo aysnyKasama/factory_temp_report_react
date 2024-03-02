@@ -15,6 +15,7 @@ function App() {
 
     // -------------------------    エクセルデータの状態を管理  -------------------------
     const [selectedExcelFile, setSelectedExcelFile] = useState('Excel1');   // 機能１.選択されたエクセルファイル名
+    const [selectedDate, setSelectedDate] = useState(new Date());           // 機能2.ヘッダーで選択された日付
     const [excelData, setExcelData] = useState([]);                         // 帳票データ
 
     // 選択されたエクセルファイルが変更された場合、またはコンポーネントがマウントされた時にデータを取得
