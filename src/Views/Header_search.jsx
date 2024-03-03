@@ -9,12 +9,14 @@ import {
     Button
 } from '@mui/material';
 
+const path = `/factory/temperature`;  // パスを設定
+
 const HeaderSearch = ({ onDeviceChange, DeviceList,selectedDevice,setSelectedDevice,　selectedDate,setSelectedDate }) => {
     const selectedDeviceInfo = DeviceList.find((option) => option.deviceId === selectedDevice);
 
     return (
         <Box mb={4} className="header-component">
-            <Grid container alignItems="center" spacing={2}>
+            <Grid container alignItems="center" justifyContent="space-between">
                 <Grid item>
                     <Typography variant="h6" mb={2}>検索条件</Typography>
                 </Grid>
@@ -23,6 +25,18 @@ const HeaderSearch = ({ onDeviceChange, DeviceList,selectedDevice,setSelectedDev
                     印刷
                     </Button>
                 </Grid>
+                <Grid item>
+                    {/* 戻るボタン */}
+                    <Button 
+                        variant="contained" 
+                        size='large'
+                        // color="primary" 他の色
+                        color='info'
+                        onClick={() => window.location.href=`${path}`} // パスにリダイレクト
+                    >
+                        戻る
+                    </Button>
+                </Grid >
             </Grid>
 
             <Grid container spacing={2}>
