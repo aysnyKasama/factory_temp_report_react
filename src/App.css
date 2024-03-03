@@ -10,11 +10,3 @@
 
 }
 
-@media print {
-    /* 印刷時にヘッダー　非表示 */
-    .header-component {
-        display: none;
-    }
-}
-
-

@@ -1,25 +1,91 @@
-.a4Landscape {
+.report-page {
   width:  297mm; /* A4の高さ 297mm*/
   height: 210mm; /* A4の幅 210mm*/
   border: 1px solid #D3D3D3; /* 印刷時には非表示に設定 */
   margin: auto; /* 中央揃え */
+  padding: 20px; /* 内側の余白 */
   background: white; /* 背景色 */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* シャドウ効果（画面表示用） */
-  page-break-after: always; /* 印刷時に次の要素を新しいページに */
+  page-break-after: auto; /* 印刷時に次の要素を新しいページに */
   /* 下側に余白を追加 */
   margin-bottom: 10px;
 }
+/* 最後のページ用のスタイルを追加 last-page report-page-last */
+.report-page-last {
+  width:  297mm; /* A4の高さ 297mm*/
+  height: 210mm; /* A4の幅 210mm*/
+  border: 1px solid #D3D3D3; /* 印刷時には非表示に設定 */
+  margin: auto; /* 中央揃え */
+  padding: 20px; /* 内側の余白 */
+  background: white; /* 背景色 */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* シャドウ効果（画面表示用） */
+  page-break-after: avoid; /* 印刷時に最後のページの後に新しいページを追加しない */
+  
+}
 
+.report-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.report-table {
+  width: 32%;
+  margin-bottom: 20px;
+}
+
+.report-header {
+  text-align: center;
+  margin-top: 0;
+}
+
+.report-info {
+  text-align: right;
+  margin-top: -20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  border: 1px solid black;
+  padding: 3px;
+  text-align: center;
+}
+
+/* 印刷時のスタイル */
 @media print {
-  .a4Landscape {
+  body {
+    width: 297mm;
+    height: 210mm;
+    margin: 0;
+  }
+  /* 印刷時にヘッダー　非表示 */
+  .header-component {
+    display: none;
+  }
+  .print-button{
+    display: none;
+  }
+  .report-page {
+    box-shadow: none ; /* 印刷時にはシャドウを非表示に */
+    border: none ; /* 印刷時には境界線を非表示に */
+    page-break-after: auto; /* 印刷時に次の要素を新しいページに */
+  }
+  .report-page-last {
     box-shadow: none; /* 印刷時にはシャドウを非表示に */
     border: none; /* 印刷時には境界線を非表示に */
-    width: 100%; /* 印刷時にはページ幅いっぱいに */
-    height: auto; /* 印刷時には自動的に高さを調整 */
-    margin: 0; /* 印刷時には余白なし */
-    page-break-after: always; /* 印刷時に次の要素を新しいページに */
+    page-break-after: avoid; /* 印刷時に最後のページの後に新しいページを追加しない */
   }
+
   .table, .table tr, .table td, .table th {
       page-break-inside: avoid; /* テーブルの行がページを跨がないように */
     }
+  .papers{
+    width: 1152px;  /* 1枚のときにサイズ変わっちゃうので固定値 */
+  }
 }
