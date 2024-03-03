@@ -26,14 +26,18 @@ const HeaderSearch = ({ onDeviceChange, DeviceList,selectedDevice,setSelectedDev
                     />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
-                    <Autocomplete
-                        options={DeviceList.map((option) => option.deviceId)}
-                        value={selectedDevice}
-                        onChange={(event, newValue) => { 
-                            setSelectedDevice(newValue);
-                            onDeviceChange(newValue); // onDataChange を onDeviceChange に変更
-                        }}
-                        renderInput={(params) => <TextField {...params} label="デバイスリスト" />}
+                <Autocomplete
+                    options={DeviceList.map((option) => option.deviceName)} // デバイス名を使用
+                    getOptionLabel={(option) => option} // デバイス名を表示するためのラベルを設定
+                    value={selectedDeviceInfo ? selectedDeviceInfo.deviceName : ''} // 選択されたデバイス名を表示
+                    onChange={(event, newValue) => {
+                        const device = DeviceList.find((option) => option.deviceName === newValue);
+                        if (device) {
+                        setSelectedDevice(device.deviceId); // デバイス名に基づいてデバイスIDをセット
+                        onDeviceChange(device.deviceId); // デバイス名に基づいてデバイスIDを親コンポーネントに通知
+                        }
+                    }}
+                    renderInput={(params) => <TextField {...params} label="デバイスリスト" />}
                     />
                 </Grid>
                 {/* デバイスリストで選択されたdeviceNameとdeviceRoomをテキスト表示 */}

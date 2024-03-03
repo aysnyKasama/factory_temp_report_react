@@ -12,9 +12,10 @@ import './App.css';
 
 function handlePrint() {
     // 印刷用のロジックをここに実装
-    if (window.confirm('印刷を開始しますか？')) {
-      window.print();
-    }
+    // if (window.confirm('印刷を開始しますか？')) {
+    //   window.print();
+    // }
+    window.print();
   }
 
 function App() {
