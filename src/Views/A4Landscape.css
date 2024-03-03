@@ -71,6 +71,9 @@
   .print-button{
     display: none;
   }
+  .sidebar{
+    display: none;
+  }
   .report-page {
     box-shadow: none ; /* 印刷時にはシャドウを非表示に */
     border: none ; /* 印刷時には境界線を非表示に */

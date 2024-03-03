@@ -6,6 +6,7 @@ import {
     Typography,
     Grid,
     Autocomplete,
+    Button
 } from '@mui/material';
 
 const HeaderSearch = ({ onDeviceChange, DeviceList,selectedDevice,setSelectedDevice,　selectedDate,setSelectedDate }) => {
@@ -13,7 +14,17 @@ const HeaderSearch = ({ onDeviceChange, DeviceList,selectedDevice,setSelectedDev
 
     return (
         <Box mb={4} className="header-component">
-            <Typography variant="h6" mb={2}>検索条件</Typography>
+            <Grid container alignItems="center" spacing={2}>
+                <Grid item>
+                    <Typography variant="h6" mb={2}>検索条件</Typography>
+                </Grid>
+                <Grid item>
+                    <Button variant="contained" color="primary" onClick={() => window.print()} className='print-button'>
+                    印刷
+                    </Button>
+                </Grid>
+            </Grid>
+
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6} md={3}>
                     <TextField

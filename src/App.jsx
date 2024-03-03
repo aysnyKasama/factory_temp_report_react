@@ -10,14 +10,6 @@ import TyouhyouData03 from './Datas/TyouhyouData03rand';
 import sampleDeviceList from './Datas/DeviceList';
 import './App.css';
 
-function handlePrint() {
-    // 印刷用のロジックをここに実装
-    // if (window.confirm('印刷を開始しますか？')) {
-    //   window.print();
-    // }
-    window.print();
-  }
-
 function App() {
     // -------------------------    デバッグモードの状態を管理  -------------------------
     const [isDebugMode, setIsDebugMode] = useState(false); // デバッグモードの状態
@@ -97,7 +89,7 @@ function App() {
         <div className='App'>
             <CssBaseline />
             <Container maxWidth="lg">
-                <button onClick={handlePrint} className='print-button'>印刷</button>
+                {/* <button onClick={handlePrint} className='print-button'>印刷</button> */}
                 <Header onDeviceChange={handleDeviceChange} DeviceList={DeviceList}　selectedDevice={selectedDevice} setSelectedDevice={setSelectedDevice}　selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
                 <Papers data={tempData} DeviceList={DeviceList} selectedDevice={selectedDevice} />
             </Container>
